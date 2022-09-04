@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <title>Home Page</title>
+  </head>
+  <style>
+    body {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    .main {
+      width: 450px;
+      display: flex;
+      flex-direction: column;
+      border: solid 1px cadetblue;
+      border-radius: 8px;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+      background: aliceblue;
+    }
+
+    .title {
+      text-align: center;
+      padding: 30px;
+      border-bottom: solid 1px cadetblue;
+    }
+
+    .div_button {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      margin: 2px;
+    }
+
+    button {
+      width: 100%;
+    }
+  </style>
+  <body>
+    <div class="main">
+      <div class="title">
+        <h3>Usuário {{text}} com sucesso</h3>
+      </div>
+      <div class="div_button">
+        <a href="register"
+          ><button type="button" class="btn btn-primary">Create</button></a
+        >
+        <a href="users"
+          ><button type="button" class="btn btn-secondary">Read</button></a
+        >
+        <a href="update"
+          ><button type="button" class="btn btn-success">Update</button></a
+        >
+        <a href="delete"
+          ><button type="button" class="btn btn-danger">Delete</button></a
+        >
+      </div>
+    </div>
+  </body>
+</html>

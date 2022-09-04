@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+  <style>
+    html {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    p {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .minhaDiv {
+      display: flex;
+      width: 800px;
+      align-items: center;
+      justify-content: center;
+      align-content: center;
+      height: 100%;
+    }
+
+    .form-check {
+      padding-left: 0 !important;
+    }
+
+    form {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      height: 100%;
+    }
+
+    .info_antigas {
+      width: 43%;
+      border: solid 1px cadetblue;
+      border-radius: 8px;
+      padding: 39px 16px;
+      height: unset;
+      margin: 30px 0 190px 0;
+    }
+
+    .info_novas {
+      width: 43%;
+      border: solid 1px cadetblue;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 110px 0 60px 0;
+    }
+
+    .discricao_passsword {
+      font-size: 12px;
+      color: #5c9c9e;
+    }
+
+    button {
+      width: 100%;
+    }
+  </style>
+  <body>
+    <div class="minhaDiv">
+      <form action="http://127.0.0.1:5000/update" method="post">
+        <div class="info_antigas">
+          <h4>Dados Antigos</h4>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input
+              type="email"
+              name="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              required="true"
+            />
+          </div>
+          <div class="mb-3 form-check">
+            <label for="exampleInputEmail1" class="form-label">Senha</label>
+            <input
+              type="password"
+              name="password"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              required="true"
+            />
+          </div>
+        </div>
+        <div class="info_novas">
+          <br />
+          <h4>Digite suas novas informações</h4>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Name</label>
+            <input
+              type="text"
+              name="newName"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              required="true"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input
+              type="email"
+              name="newEmail"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              required="true"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Senha</label>
+            <input
+              type="password"
+              name="newPassword"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              required="true"
+            />
+            <p class="discricao_passsword">
+              Sua senha deve conter pelo menos 8 caracteres!
+            </p>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Confirme sua senha</label
+            >
+            <input
+              type="password"
+              name="confirmNewPassword"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              required="true"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
