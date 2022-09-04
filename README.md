@@ -2,7 +2,7 @@
 
 * Esta API é um pequeno projeto utilizando as tecnologias FLask e Postgresql com Psycopg2
 
-* Para iniciar a api, primeiro crie o ambiente flask.
+* Para iniciar a api, primeiro crie e ative o ambiente flask.
 Mais informações aqui https://flask.palletsprojects.com/en/2.2.x/installation/.
 
 * Agora será necessário criar uma tabela no Postgresql com as informações a seguir:
