@@ -1,5 +1,3 @@
-import json
-from msilib.schema import Condition
 from flask import Flask, render_template, request
 import psycopg2
 
@@ -26,7 +24,7 @@ conn = psycopg2.connect(
 cursor = conn.cursor()
 
 
-# --------------------------- INDEX ---------------------------- #
+# ----------------------------- INDEX ---------------------------- #
 
 @app.route("/", methods=["GET"])
 def AllRoutes():
