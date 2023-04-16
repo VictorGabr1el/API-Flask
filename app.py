@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import psycopg2
+import bcrypt
 
 # -------------- variáveis de ambiente --------------- #
 import os
@@ -9,11 +10,11 @@ from dotenv import load_dotenv
 dotenv_path = join(dirname(__file__), ".env")
 load_dotenv(dotenv_path)
 
-DB_NAME = os.environ.get("DB_NAME")
-DB_USER = os.environ.get("DB_USER")
-DB_PASSWORD = os.environ.get("DB_PASSWORD")
-DB_HOST = os.environ.get("DB_HOST")
-DB_PORT = os.environ.get("DB_PORT")
+DB_NAME = os.environ.get("NAME")
+DB_USER = os.environ.get("USER")
+DB_PASSWORD = os.environ.get("PASSWORD")
+DB_HOST = os.environ.get("HOST")
+DB_PORT = os.environ.get("PORT")
 
 
 app = Flask(__name__)
@@ -22,6 +23,8 @@ conn = psycopg2.connect(
     f"dbname={DB_NAME} user={DB_USER} password={DB_PASSWORD} host={DB_HOST} port={DB_PORT}")
 
 cursor = conn.cursor()
+
+# cursor.execute("CREATE TABLE IF NOT EXISTS public.users ( id serial NOT NULL, name character varying NOT NULL, email character varying NOT NULL, password character varying NOT NULL, CONSTRAINT users_pkey PRIMARY KEY (id), CONSTRAINT users_email_key UNIQUE (email) )")
 
 
 # ----------------------------- INDEX ---------------------------- #
@@ -53,7 +56,7 @@ def register():
 
             if len(email) == 0:
                 return "digite um email válido", 422
-            
+
             if len(password) < 8:
                 return "A senha deve ter no minimo 8 caracteres", 422
 
@@ -63,17 +66,26 @@ def register():
             # ---- checking if email exist ---- #
 
             cursor.execute(
-                f"SELECT * FROM users WHERE email = %(email)s", ({'email': email}))
+                f'SELECT * FROM public.users WHERE email = %(email)s', ({'email': email}))
 
             checkemail = cursor.fetchall()
 
             if bool(checkemail) == True:
                 return "email ja está em uso"
 
-            cursor.execute(
-                "INSERT INTO public.users (name, email, password) VALUES (%s, %s, %s);", (name, email, password))
+            passwordHash = bcrypt.kdf(
+                password=password,
+                salt=11,
+                desired_key_bytes=32,
+                rounds=9
+            )
 
-            conn.commit()
+            print(passwordHash)
+
+            if passwordHash == True:
+                cursor.execute(
+                    "INSERT INTO public.users (name, email, password) VALUES (%s, %s, %s);", (name, email, passwordHash))
+                conn.commit()
 
             return render_template("response.html", text="criado"), 201
 
@@ -153,7 +165,7 @@ async def updateUser():
                     return "O email que está tentando cadastrar já está em uso", 422
 
             cursor.execute(f"UPDATE users SET name = %(newName)s, email = %(newEmail)s, password = %(newPassword)s WHERE email = %(email)s AND password = %(password)s", ({
-                        'newName': newName, 'newEmail': newEmail, 'newPassword': newPassword, 'email': email, 'password': password}))
+                'newName': newName, 'newEmail': newEmail, 'newPassword': newPassword, 'email': email, 'password': password}))
 
             conn.commit()
 
@@ -201,5 +213,6 @@ def deletUser():
         conn.commit()
 
         return render_template("response.html", text="deletado"), 200
+
 
 app.run(debug=True)
