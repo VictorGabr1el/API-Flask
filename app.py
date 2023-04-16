@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 import psycopg2
-import bcrypt
 
 # -------------- variáveis de ambiente --------------- #
 import os
