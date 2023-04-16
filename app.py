@@ -73,24 +73,14 @@ def register():
             if bool(checkemail) == True:
                 return "email ja está em uso"
 
-            passwordHash = bcrypt.kdf(
-                password=password,
-                salt=11,
-                desired_key_bytes=32,
-                rounds=9
-            )
-
-            print(passwordHash)
-
-            if passwordHash == True:
-                cursor.execute(
-                    "INSERT INTO public.users (name, email, password) VALUES (%s, %s, %s);", (name, email, passwordHash))
-                conn.commit()
+            cursor.execute(
+                "INSERT INTO public.users (name, email, password) VALUES (%s, %s, %s);", (name, email, password))
+            conn.commit()
 
             return render_template("response.html", text="criado"), 201
 
     except Exception as N:
-        return "não foi possivel realizar seu cadastro", 500, print(N)
+        return 500, print(N)
 
 
 # ---------------------------- READ ---------------------------- #
