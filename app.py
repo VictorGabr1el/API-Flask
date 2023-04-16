@@ -87,7 +87,7 @@ def register():
 
 @app.route("/users", methods=["GET"])
 def allUsers():
-    cursor.execute("SELECT * FROM users")
+    cursor.execute("SELECT id, name, email FROM users")
     users = cursor.fetchall()
     return render_template("get.html", users=users), 200
 

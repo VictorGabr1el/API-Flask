@@ -1,59 +1,60 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <style>
-    body {
-      display: flex;
-      width: 100vw;
-      height: 100vh;
-      align-items: center;
-      justify-content: center;
-      margin: 0;
-      padding: 0;
-    }
 
-    td {
-      margin: 0;
-      padding: 5px 8px;
-      border: solid 1px cadetblue;
-    }
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<style>
+  body {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
 
-    table {
-      font-family: system-ui;
-    }
+  td {
+    margin: 0;
+    padding: 5px 8px;
+    border: solid 1px cadetblue;
+  }
 
-    td.colun {
-      background: antiquewhite;
-      text-align: center;
-    }
-  </style>
-  <body>
-    <div>
-      <table>
-        <div>
-          <tr>
-            <td class="colun">ID</td>
-            <td class="colun">NAME</td>
-            <td class="colun">EMAIL</td>
-            <td class="colun">PASSWORD</td>
-          </tr>
-        </div>
-        <div>
-          {% for ww in users %}
-          <tr>
-            <td>{{ww[0]}}</td>
-            <td>{{ww[1]}}</td>
-            <td>{{ww[2]}}</td>
-            <td>{{ww[3]}}</td>
-          </tr>
-          {% endfor %}
-        </div>
-      </table>
-    </div>
-  </body>
+  table {
+    font-family: system-ui;
+  }
+
+  td.colun {
+    background: antiquewhite;
+    text-align: center;
+  }
+</style>
+
+<body>
+  <div>
+    <table>
+      <div>
+        <tr>
+          <td class="colun">ID</td>
+          <td class="colun">NAME</td>
+          <td class="colun">EMAIL</td>
+        </tr>
+      </div>
+      <div>
+        {% for ww in users %}
+        <tr>
+          <td>{{ww[0]}}</td>
+          <td>{{ww[1]}}</td>
+          <td>{{ww[2]}}</td>
+        </tr>
+        {% endfor %}
+      </div>
+    </table>
+  </div>
+</body>
+
 </html>
