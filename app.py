@@ -204,4 +204,4 @@ def deletUser():
         return render_template("response.html", text="deletado"), 200
 
 
-app.run(debug=True)
+app.run()
