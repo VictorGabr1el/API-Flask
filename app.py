@@ -23,7 +23,7 @@ conn = psycopg2.connect(
 
 cursor = conn.cursor()
 
-# cursor.execute("CREATE TABLE IF NOT EXISTS public.users ( id serial NOT NULL, name character varying NOT NULL, email character varying NOT NULL, password character varying NOT NULL, CONSTRAINT users_pkey PRIMARY KEY (id), CONSTRAINT users_email_key UNIQUE (email) )")
+cursor.execute("CREATE TABLE IF NOT EXISTS public.users ( id serial NOT NULL, name character varying NOT NULL, email character varying NOT NULL, password character varying NOT NULL, CONSTRAINT users_pkey PRIMARY KEY (id), CONSTRAINT users_email_key UNIQUE (email) )")
 
 
 # ----------------------------- INDEX ---------------------------- #
